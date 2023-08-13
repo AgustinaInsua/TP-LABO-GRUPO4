@@ -8,8 +8,8 @@
 
 En este repositorio, presentamos nuestro trabajo realizado en el marco de la materia "Laboratorio de Construcción de Software". Nuestro grupo, el Grupo 4, está conformado por:
 
-👩 Agustina Insua
-👩 Agustina Mendez
+👩 Agustina Insua.<br>
+👩 Agustina Mendez.<br>
 👨 Matias Curcio
 
 ---
@@ -22,7 +22,7 @@ El objetivo de nuestro trabajo es (ponerobj).
 
 ### Materia y Cuatrimestre 📅
 
-Materia: Laboratorio de Construcción de Software
+Materia: Laboratorio de Construcción de Software.<br>
 Cuatrimestre: 2do Cuatrimestre 2023
 
 ### Contenido 📊
