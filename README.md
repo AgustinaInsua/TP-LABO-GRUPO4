@@ -3,10 +3,3 @@ Este repositorio contiene datos y análisis relacionados con la vigilancia de in
 
 ## Tabla de Contenidos
 
-- [Descripción](#descripción-del-proyecto)
-- [Datos](#datos)
-- [Análisis](#análisis)
-- [Resultados](#resultados)
-- [Cómo Contribuir](#cómo-contribuir)
-- [Licencia](#licencia)
-
