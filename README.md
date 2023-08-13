@@ -1,4 +1,4 @@
-# Trabajo Práctico Inicial - Grupo 4 👩‍💻👨‍💻
+# Trabajo Práctico Inicial - Grupo 4
 
 ¡Bienvenidos a nuestro repositorio del Trabajo Práctico Inicial! 🚀
 
