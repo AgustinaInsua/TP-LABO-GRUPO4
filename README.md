@@ -20,7 +20,7 @@ Hemos documentado nuestra investigación sobre IA, Machine Learning y Deep Learn
 
 ### Objetivo 🎯
 
-El objetivo de nuestro trabajo focalizar las campañas de prevención y optimizar, en la medida de lo posible, la planificación de medidas de salud pública (nuevas salitas, cambios en la disposición de hospitales) <br>
+El objetivo de nuestro trabajo es focalizar las campañas de prevención y optimizar, en la medida de lo posible, la planificación de medidas de salud pública (nuevas salitas, cambios en la disposición de hospitales) <br>
 
 ### Variable a medir 📊
 
