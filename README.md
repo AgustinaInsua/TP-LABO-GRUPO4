@@ -20,11 +20,11 @@ Hemos documentado nuestra investigación sobre IA, Machine Learning y Deep Learn
 
 ### Objetivo 🎯
 
-El objetivo de nuestro trabajo es Identificar patrones y agrupaciones no evidentes en los datos de infecciones respiratorias agudas. <br>
+El objetivo de nuestro trabajo focalizar las campañas de prevención y optimizar, en la medida de lo posible, la planificación de medidas de salud pública (nuevas salitas, cambios en la disposición de hospitales) <br>
 
 ### Variable a medir 📊
 
-La agrupación o clasificación de casos de infecciones respiratorias agudas en categorías similares en función de ciertas características, como provincia, grupo etario, tipo de enfermedad
+Seleccionaremos como variable a medir la clasificación de casos de infecciones respiratorias agudas en función de las provincias-localidades
 
 ### Materia y Cuatrimestre 📅
 
