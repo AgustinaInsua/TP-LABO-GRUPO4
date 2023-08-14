@@ -31,12 +31,6 @@ Hemos documentado nuestra investigación sobre IA, Machine Learning y Deep Learn
 
 ---
 
-
-## Recursos Adicionales 📚
-
-En la carpeta "Recursos", encontrarás material adicional que hemos utilizado para nuestra investigación, como artículos, tutoriales y libros.
-
 ¡Esperamos que encuentres nuestro trabajo interesante y útil!
 
----
 Grupo 4 - Laboratorio de Construcción de Software
