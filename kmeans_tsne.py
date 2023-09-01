@@ -84,6 +84,16 @@ for column, mapping in assignment_mapping.items():
 
 combined_data.fillna(0, inplace=True)
 
+#Sumamos todos los casos que cumplan: misma provincia, año, grupo de edad, tipo de enfermedad, semanas epidemiologicas
+
+for index, row in combined_data.iterrows():
+    resultSum = combined_data.loc[(combined_data['provincia_id'] == row['provincia_id'])  & (combined_data['grupo_edad_id'] == row['grupo_edad_id']) & (combined_data['año'] == row['año'])
+                   & (combined_data['semanas_epidemiologicas'] == row['semanas_epidemiologicas']) & (combined_data['evento_nombre'] == row['evento_nombre']), 'cantidad_casos'].sum()
+    combined_data.at[index,'cantidad_casos'] = resultSum
+
+combined_data.drop_duplicates(subset=['provincia_id', 'año', 'semanas_epidemiologicas', 'evento_nombre', 'grupo_edad_id'], keep='first', inplace=True)
+
+#Eliminamos las columnas que no se van a utilizar
 columns_to_drop = ['departamento_id', 'departamento_nombre', 'provincia_nombre', 'semanas_epidemiologicas', 'departamento_nombre', 'grupo_edad_desc']
 combined_data = combined_data.drop(columns=columns_to_drop)
 combined_data
@@ -127,7 +137,7 @@ plt.grid(True)
 plt.show()
 
 # Aplicamos K-Means para clasificar las regiones en grupos
-kmeans = KMeans(n_clusters=5, n_init=100, random_state=0).fit(combined_data)
+kmeans = KMeans(n_clusters=3, n_init=100, random_state=0).fit(combined_data)
 
 # Asigna un color a cada región en base a los clusters
 combined_data['Cluster'] = kmeans.predict(combined_data)
@@ -161,11 +171,28 @@ plt.show()
 # Crea un gráfico de distribución de provincias para cada cluster
 unique_clusters = np.unique(kmeans.labels_)
 for cluster in unique_clusters:
+    # Filtramos la tabla por cada cluster
     cluster_data = combined_data[combined_data['Cluster'] == cluster]
+    # Obtenemos un array con la cantidad de veces que se tiene esa provincia en el cluster
     province_counts = cluster_data['provincia_id'].value_counts()
 
+    # Recorremos las filas de la tabla filtrada por clusters
+    for index, row in cluster_data.iterrows():
+      # Sumamos el resultado de la cantidad de casos, de cada provincia
+      resultSum = cluster_data.loc[(cluster_data['provincia_id'] == row['provincia_id']), 'cantidad_casos'].sum()
+      # Reemplazamos la cantidad de casos de la row actual, con la sumatoria de todos los casos
+      cluster_data.at[index,'cantidad_casos'] = resultSum
+
+    # Borramos todos las filas que tienen provincia repetida y dejamos la primera que tiene la sumatoria correcta
+    cluster_data.drop_duplicates(subset=['provincia_id'], keep='first', inplace=True)
+
+    # Hacemos que nuestro id sea la provincia_id
+    cluster_data.set_index('provincia_id', inplace=True)
+    # Creamos un array la cantidad de casos y (con lo anterior dejamos la provincia_id como el id)
+    cluster_data_filter = cluster_data['cantidad_casos']
+
     plt.figure(figsize=(10, 6))
-    province_counts.plot(kind='bar', color='blue', alpha=0.7)
+    cluster_data_filter.plot(kind='bar', color='blue', alpha=0.7)
 
     plt.title(f'Distribución de provincias en Cluster {cluster}')
     plt.xlabel('Provincia')
