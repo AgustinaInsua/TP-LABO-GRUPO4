@@ -64,9 +64,9 @@ combined_data['tsne_y'] = tsne_coordinates[:, 1]
 
 
 # Suponemos que el usuario ingreso provincia_id,  grupo_edad_id y evento
-def consultar_riesgo_de_enfermarse(provincia_id_user, grupo_edad_id_user, evento_nombre_user):
-  data_for_this_user = combined_data.loc[(combined_data['provincia_id'] == provincia_id_user) & (combined_data['grupo_edad_id'] == grupo_edad_id_user) & (combined_data['evento_nombre'] == evento_nombre_user)]
-  cant_casos_pais_con_evento_nombre_user = combined_data.loc[(combined_data['grupo_edad_id'] == grupo_edad_id_user) & (combined_data['evento_nombre'] == evento_nombre_user), 'cantidad_casos'].sum()
+def consultar_riesgo_de_enfermarse(provincia_id_user, grupo_edad_id_user, evento_id_user, provincia_nombre_user, evento_nombre_user):
+  data_for_this_user = combined_data.loc[(combined_data['provincia_id'] == provincia_id_user) & (combined_data['grupo_edad_id'] == grupo_edad_id_user) & (combined_data['evento_nombre'] == evento_id_user)]
+  cant_casos_pais_con_evento_id_user = combined_data.loc[(combined_data['grupo_edad_id'] == grupo_edad_id_user) & (combined_data['evento_nombre'] == evento_id_user), 'cantidad_casos'].sum()
 
   string_return = ""
   if data_for_this_user.empty:
@@ -74,11 +74,11 @@ def consultar_riesgo_de_enfermarse(provincia_id_user, grupo_edad_id_user, evento
   else:
     for index, row in data_for_this_user.iterrows():
       if row.cluster == 0:
-        string_return = "El riesgo de enfermarse es bajo. \n"
+        string_return = "Prioridad baja. \n"
       else:
-        string_return = "El riesgo de enfermarse es alto. \n"
-      porcentaje_enfermos = row['cantidad_casos'] * 100 // cant_casos_pais_con_evento_nombre_user
-      string_return = string_return + "Porcentaje de enfermarse en la provincia: " + str(porcentaje_enfermos) + "%"
+        string_return = "Prioridad alta. \n"
+      porcentaje_enfermos = row['cantidad_casos'] * 100 // cant_casos_pais_con_evento_id_user
+      string_return = string_return + "Probabilidad de enfermarse de " + str(evento_nombre_user) + " en " + str(provincia_nombre_user) + ": " + str(porcentaje_enfermos) + "%"
       break
   return string_return
 

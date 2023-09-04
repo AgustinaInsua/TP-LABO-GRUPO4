@@ -37,9 +37,9 @@ def mostrar_pagina_consultar():
     else:
        grupo_edad_id = 5  # Adultos mayores > 65 años
 
-    if st.button('Predecir'):
+    if st.button('Consultar'):
        provincia_id = mapear_provincia_a_id(provincia_seleccionada) 
        enfermedad_id = mapear_enfermedad_a_id(enfermedad_seleccionada)
-       resultado = consultar_riesgo_de_enfermarse(provincia_id, grupo_edad_id, enfermedad_id)  
+       resultado = consultar_riesgo_de_enfermarse(provincia_id, grupo_edad_id, enfermedad_id, provincia_seleccionada, enfermedad_seleccionada )  
        st.write('Resultado de la consulta:')
        st.write(resultado)
