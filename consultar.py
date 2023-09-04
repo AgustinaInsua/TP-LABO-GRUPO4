@@ -23,7 +23,7 @@ def mostrar_pagina_consultar():
     
     enfermedad_seleccionada = st.selectbox('Seleccione una enfermedad',['Bronquiolitis en menores de 2 años', 'Enfermedad tipo influenza (ETI)', 'Neumonía'] )
 
-    edad_ingresada= st.number_input('Ingrese su edad', min_value=0, max_value=120, value=2) 
+    edad_ingresada= st.number_input('Ingrese su edad', min_value=0, max_value=120, value=1) 
 
     # Clasificar la edad del usuario en grupos
     if 0 <= edad_ingresada <= 1:
@@ -42,12 +42,34 @@ def mostrar_pagina_consultar():
        enfermedad_id = mapear_enfermedad_a_id(enfermedad_seleccionada)
        resultado = consultar_riesgo_de_enfermarse(provincia_id, grupo_edad_id, enfermedad_id, provincia_seleccionada, enfermedad_seleccionada )  
      
-       # Establecer una clase CSS en función de la prioridad
+     # Establecer una clase CSS en función de la prioridad
+       
        if "Prioridad alta" in resultado:
-           st.error(resultado)
+           st.markdown(
+               f'<p class="error-message" style="font-size: 26px;">{resultado}</p>', 
+               unsafe_allow_html=True
+            )
        elif "Prioridad baja" in resultado:
-           st.success(resultado)
-       else:
-           st.write(resultado)    
+            st.markdown(                
+                f'<p class="success-message" style="font-size: 26px;">{resultado}</p>', 
+                unsafe_allow_html=True
+            )
+       else:                     
+           st.write(resultado, key="resultado")
+
+       # Agregar CSS personalizado
+       st.markdown(
+           """
+           <style>
+           .error-message {
+           color: red;
+           }
+           .success-message {
+           color: green;
+           }
+           </style>
+           """,
+           unsafe_allow_html=True,
+        )
 
        
