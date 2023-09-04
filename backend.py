@@ -78,7 +78,7 @@ def consultar_riesgo_de_enfermarse(provincia_id_user, grupo_edad_id_user, evento
       else:
         string_return = "Prioridad alta. \n"
       porcentaje_enfermos = row['cantidad_casos'] * 100 // cant_casos_pais_con_evento_id_user
-      string_return = string_return + "Probabilidad de enfermarse de " + str(evento_nombre_user) + " en " + str(provincia_nombre_user) + ": " + str(porcentaje_enfermos) + "%"
+      string_return = string_return + "\n" + "Probabilidad de enfermarse de " + str(evento_nombre_user) + " en " + str(provincia_nombre_user) + ": " + str(porcentaje_enfermos) + "%"
       break
   return string_return
 
@@ -115,7 +115,7 @@ def mapear_provincia_a_id(nombre_provincia):
     return provincias_a_ids.get(nombre_provincia, -1)
 
 enfermedades_a_ids = {
-        'Bronquiolitis': 2,
+        'Bronquiolitis en menores de 2 años': 2,
         'Enfermedad tipo influenza (ETI)': 3,
         'Neumonía': 1,
     }

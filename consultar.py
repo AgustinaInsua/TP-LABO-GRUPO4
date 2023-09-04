@@ -21,9 +21,9 @@ def mostrar_pagina_consultar():
 
     provincia_seleccionada = st.selectbox('Selecciona una provincia de Argentina', ['Buenos Aires', 'CABA', 'Catamarca', 'Chaco', 'Chubut', 'Córdoba', 'Corrientes', 'Entre Ríos', 'Formosa', 'Jujuy','La Pampa', 'La Rioja', 'Mendoza', 'Misiones', 'Neuquén', 'Río Negro', 'Salta', 'San Juan', 'San Luis', 'Santa Cruz', 'Santa Fe', 'Santiago del Estero', 'Tierra del Fuego', 'Tucumán'])
     
-    enfermedad_seleccionada = st.selectbox('Seleccione una enfermedad',['Bronquiolitis', 'Enfermedad tipo influenza (ETI)', 'Neumonía'] )
+    enfermedad_seleccionada = st.selectbox('Seleccione una enfermedad',['Bronquiolitis en menores de 2 años', 'Enfermedad tipo influenza (ETI)', 'Neumonía'] )
 
-    edad_ingresada= st.number_input('Ingrese su edad', min_value=0, max_value=120, value=30) 
+    edad_ingresada= st.number_input('Ingrese su edad', min_value=0, max_value=120, value=2) 
 
     # Clasificar la edad del usuario en grupos
     if 0 <= edad_ingresada <= 1:
@@ -41,5 +41,13 @@ def mostrar_pagina_consultar():
        provincia_id = mapear_provincia_a_id(provincia_seleccionada) 
        enfermedad_id = mapear_enfermedad_a_id(enfermedad_seleccionada)
        resultado = consultar_riesgo_de_enfermarse(provincia_id, grupo_edad_id, enfermedad_id, provincia_seleccionada, enfermedad_seleccionada )  
-       st.write('Resultado de la consulta:')
-       st.write(resultado)
+     
+       # Establecer una clase CSS en función de la prioridad
+       if "Prioridad alta" in resultado:
+           st.error(resultado)
+       elif "Prioridad baja" in resultado:
+           st.success(resultado)
+       else:
+           st.write(resultado)    
+
+       
