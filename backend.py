@@ -82,3 +82,46 @@ def consultar_riesgo_de_enfermarse(provincia_id_user, grupo_edad_id_user, evento
       break
   return string_return
 
+provincias_a_ids = {
+    'Buenos Aires': 1,
+    'CABA': 2,
+    'Catamarca':3,
+    'Chaco': 4,    
+    'Chubut': 5,   
+    'Córdoba': 6,
+    'Corrientes': 7,
+    'Entre Ríos':8,
+    'Formosa': 9,
+    'Jujuy': 10,
+    'La Pampa': 11,
+    'La Rioja': 12,
+    'Mendoza': 13,
+    'Misiones': 14,
+    'Neuquén': 15,
+    'Río Negro': 16,
+    'Salta': 17,
+    'San Juan': 18,
+    'San Luis': 19,
+    'Santa Cruz': 20,
+    'Santa Fe': 21,
+    'Santiago del Estero': 22,
+    'Tierra del Fuego': 23,
+    'Tucumán': 24
+}
+
+# Función para mapear el nombre de la provincia a su ID
+def mapear_provincia_a_id(nombre_provincia):
+    # Buscar el nombre de la provincia en el diccionario y retornar su ID ---- Si la provincia no está en el diccionario, se retorna -1
+    return provincias_a_ids.get(nombre_provincia, -1)
+
+enfermedades_a_ids = {
+        'Bronquiolitis': 2,
+        'Enfermedad tipo influenza (ETI)': 3,
+        'Neumonía': 1,
+    }
+
+# Función para mapear el nombre de la enfermedad a su ID
+def mapear_enfermedad_a_id(nombre_enfermedad):
+    
+    return enfermedades_a_ids.get(nombre_enfermedad, -1)
+
